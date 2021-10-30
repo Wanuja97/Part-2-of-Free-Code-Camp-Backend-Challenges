@@ -34,14 +34,22 @@ app.get("/json", (req, res) => {
     res.json(message);
 });
 
-//Implement a Root - Level Request Logger MiddlewarePassed
+//Implement a Root - Level Request Logger Middleware
 app.use(function (req, res, next) {
     var string = req.method + " " + req.path + " - " + req.ip;
     console.log(string);
     next()
 });
 
-
+// Get Route Parameter Input from the Client
+app.get('/:word/echo',(req,res)=>{
+  const myword = req.params.word;
+  res.json(
+    {
+      echo : myword
+    }
+  )
+});
 
 
 
