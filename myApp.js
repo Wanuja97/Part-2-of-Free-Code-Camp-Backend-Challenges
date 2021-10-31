@@ -51,7 +51,18 @@ app.get('/:word/echo',(req,res)=>{
   )
 });
 
-
+// Get Query Parameter Input from the Client
+app.route('/name').get((req, res) => {
+  const { first: firstName, last: lastName } = req.query;
+  res.json({
+    name: `${firstName} ${lastName}`
+  });
+}).post((req, res) => {
+  const { first: firstName, last: lastName } = req.query;
+  res.json({
+    name: `${firstName} ${lastName}`
+  });
+});
 
 
 
