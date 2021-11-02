@@ -64,12 +64,23 @@ app.route('/name').get((req, res) => {
   });
 });
 
+// parameter passing way
+// https://boilerplate-express-forked.wanujaranasingh.repl.co/name?first=Wanuja&last=Ranasinghe
 
+//body Parser
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser());
 
-
-
-
-
+// Get data from post request
+app.route('/name').get((req, res) => {
+  const { first: firstName, last: lastName } = req.query;
+  res.json({
+    name: `${firstName} ${lastName}`
+  });
+}).post((req, res) => {
+  var string = req.body.first + " " + req.body.last;
+  res.json({ name: string });
+});
 
 
 
